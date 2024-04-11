@@ -33,8 +33,6 @@ public sealed class Request_Specs : IClassFixture<SampleWebApplicationFactory>
 
         await harness.OutputTimeline(new TextWriterHelper(_outputHelper));
         await harness.InactivityTask;
-
-        await Task.Delay(TimeSpan.FromSeconds(5));
         
         // Assert
         Assert.True(await harness.Sent.Any<SubmitOrder>(), "Submit Order should have been sent");
