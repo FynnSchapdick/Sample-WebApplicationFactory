@@ -13,13 +13,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumersFromNamespaceContaining<NotifyCustomerOrderSubmittedConsumer>();
-
     x.AddSagaStateMachine<OrderStateMachine, OrderState, OrderStateDefinition>()
-        .RedisRepository();
+        .RedisRepository(r => r.DatabaseConfiguration(builder.Configuration.GetConnectionString("Redis")));
 
     x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host("localhost");
+        cfg.Host(builder.Configuration.GetConnectionString("RabbitMq"));
 
         cfg.ConfigureEndpoints(context);
     });

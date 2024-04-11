@@ -2,7 +2,7 @@ using MassTransit;
 
 namespace Sample.Api.StateMachines;
 
-public class OrderState :
+public sealed class OrderState :
     SagaStateMachineInstance,
     ISagaVersion
 {

@@ -4,8 +4,7 @@ using Sample.Contracts;
 namespace Sample.Api.StateMachines;
 
 #pragma warning disable CS8618
-public class OrderStateMachine :
-    MassTransitStateMachine<OrderState>
+public sealed class OrderStateMachine : MassTransitStateMachine<OrderState>
 {
     public OrderStateMachine()
     {

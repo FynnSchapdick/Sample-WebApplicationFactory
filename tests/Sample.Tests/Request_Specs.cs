@@ -29,7 +29,7 @@ public class When_request_sent_from_state_machine
 
         await harness.Start();
 
-        var client = harness.GetRequestClient<SubmitOrder>();
+        IRequestClient<SubmitOrder>? client = harness.GetRequestClient<SubmitOrder>();
 
         var orderId = Guid.NewGuid();
 
